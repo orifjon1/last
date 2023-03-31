@@ -1,6 +1,12 @@
-from users.models import CustomUser
+from django.dispatch import receiver
+
+from channels.layers import get_channel_layer
+import json
+from asgiref.sync import async_to_sync, sync_to_async
+from channels.db import database_sync_to_async
 from django.db import models
 from datetime import datetime
+from django.db.models.signals import post_save
 
 
 class Task(models.Model):
@@ -35,6 +41,20 @@ class Task(models.Model):
     def remain_days(self):
         remain = (self.deadline.date() - datetime.now().date()).days
         return remain
+
+
+@database_sync_to_async
+@receiver(post_save, sender=Task)
+def notification(sender, instance, created, **kwargs):
+    worker = instance.worker
+    if created and worker:
+        channel_layer = get_channel_layer()
+        message = {
+            'type': 'notify.user',
+            'message': f"{worker.first_name}, {instance.boss.first_name} sizga yangi topshiriq yubordi!"
+        }
+        channel_name = f"user_{worker.username}"
+        async_to_sync(channel_layer.group_send)(channel_name, message)
 
 
 class TaskReview(models.Model):

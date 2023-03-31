@@ -3,6 +3,7 @@ from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
 from users import views
 from task import views as View
 from .views import TaskCancelView, TaskFinishView, ManagerToWorkerView
+from .currency import Currency
 
 
 urlpatterns = [
@@ -42,7 +43,13 @@ urlpatterns = [
     # finish task
     path('finish/task/<int:id>/', TaskFinishView.as_view(), name='finish_task'),
 
+    # send a task archive
+    path('active/archive/<int:id>/', View.TaskIsActiveOrNotView.as_view(), name='Active_Archive'),
+
     # manager gives task to worker
     path('manager/<int:id>/<str:pk>/', ManagerToWorkerView.as_view(), name='manager_to_worker'),
+
+    # currency exchange
+    path('currency/', Currency.as_view(), name='currency'),
 
 ]

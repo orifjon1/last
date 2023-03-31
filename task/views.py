@@ -49,13 +49,20 @@ class TaskDetailUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     serializer_class = TaskSerializer
 
 
-# class TaskListView(APIView):
-#     permission_classes = [permissions.IsAuthenticated]
-#
-#     def get(self, request):
-#         tasks = Task.objects.filter(Q(boss=request.user) & Q(is_active=True))
-#         serializer = TaskSerializer(tasks, many=True)
-#         return Response(serializer.data)
+class TaskIsActiveOrNotView(APIView):
+    permission_classes = [permissions.IsAuthenticated, IsOwnerOfTask]
+
+    def post(self, request, id):
+        tasks = Task.objects.get(Q(boss=request.user) & Q(id=id) & Q(is_active=True))
+        serializer = TaskSerializer(tasks)
+        serializer.is_valid(raise_exception=True)
+        if serializer.instance.is_active:
+            serializer.instance.is_active = False
+            serializer.save()
+        else:
+            serializer.instance.is_active = True
+            serializer.save()
+            return Response(serializer.data)
 
 
 class SectorStatView(APIView):
