@@ -80,7 +80,7 @@ class ReviewConsumer(AsyncWebsocketConsumer):
         }))
 
     @database_sync_to_async
-    async def save_content(self, message, username, task_id):
+    def save_content(self, message, username, task_id):
         task = Task.objects.get(id=task_id)
         user = CustomUser.objects.get(username=username)
         TaskReview.objects.create(task=task, user=user, content=message)

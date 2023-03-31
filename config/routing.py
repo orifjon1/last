@@ -1,5 +1,5 @@
 from django.urls import path
-from .consumers import NotificationConsumer, ReviewConsumer
+from config.consumers import NotificationConsumer, ReviewConsumer
 
 
 websocket_urlpatterns = [

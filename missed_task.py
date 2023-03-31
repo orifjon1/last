@@ -1,4 +1,4 @@
-# from django.core.management.base import BaseCommand
+import time
 from django.utils import timezone
 from task.models import Task
 
@@ -9,7 +9,12 @@ def missed():
         tasks = None
     else:
         for t in tasks:
-            if t.remain_days() < 0:
+            if t.remain_days() < 2:
                 t.status = 'missed'
                 t.save()
                 print("ok, mission is done! ")
+
+
+# while True:
+#     missed()
+#     time.sleep(2 * 60)
