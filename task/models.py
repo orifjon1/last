@@ -57,6 +57,23 @@ def notification(sender, instance, created, **kwargs):
         async_to_sync(channel_layer.group_send)(channel_name, message)
 
 
+class TaskUpdateTimes(models.Model):
+    task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='updated_times')
+    updated_by = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE, related_name='updated_tasks')
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.created.date()}'
+
+
+@receiver(post_save, sender=Task)
+def create_update_time(sender, instance, created, **kwargs):
+    if not created:
+        TaskUpdateTimes.objects.create(
+            task=instance, updated_by=instance.boss
+        )
+
+
 class TaskReview(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='task_reviews')
     user = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE, related_name='user_reviews')

@@ -38,7 +38,9 @@ INSTALLED_APPS = [
 
     'rest_framework',
     # 'rest_framework.authtoken',
+    'drf_yasg',
     'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'django_filters',
 
     'django_crontab',
@@ -56,7 +58,8 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         # 'rest_framework.permissions.AllowAny'
-    )
+    ),
+
 }
 
 SIMPLE_JWT = {
@@ -208,5 +211,3 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-

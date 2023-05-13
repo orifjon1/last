@@ -17,18 +17,21 @@ urlpatterns = [
     # users
     path('signup/', views.UserSignUpView.as_view(), name='signup'),
     path('profile/', views.UserProfileView.as_view(), name='profile'),
-    path('user/stat/', views.UserStatView.as_view(), name='user_stat'),
+    path('user/stat/', views.AllUserStatView.as_view(), name='user_stat'),
+
     path('user/sector/<int:id>/', View.UserSectorView.as_view(), name='user_sector'),
     path('user/cabinet/<int:id>/', View.OneUserView.as_view(), name='user_cabinet'),
     path('user_cabinet/task/<int:id>/', View.OneUserTaskView.as_view(), name='user_cabinet_task'),
 
     # sector
     path('sector/', views.SectorView.as_view(), name='sector_list_create'),
+    path('sector/<int:id>/', views.SectorUpdateView.as_view(), name='sector_update'),
+
     path('sector/stat/', View.SectorStatView.as_view(), name='sector_stat'),
 
     # tasks
     path('task/create/', View.TaskListCreateView.as_view(), name='task_list_create'),
-    path('task/detail/', View.TaskDetailUpdateDeleteView.as_view(), name='detail_update_delete'),
+    path('task/detail/<str:pk>/', View.TaskDetailUpdateDeleteView.as_view(), name='detail_update_delete'),
     path('task/stat/', View.TaskStatView.as_view(), name='task_stat'),
     path('task/sector/<int:id>/', View.TaskSectorView.as_view(), name='sector_tasks'),
     path('task/sector/stat/<int:id>/', View.TaskSectorStatView.as_view(), name='task_sector_stat'),
@@ -44,7 +47,7 @@ urlpatterns = [
     path('finish/task/<int:id>/', TaskFinishView.as_view(), name='finish_task'),
 
     # send a task archive
-    path('active/archive/<int:id>/', View.TaskIsActiveOrNotView.as_view(), name='Active_Archive'),
+    path('active/archive/noarchive/<int:id>/', View.TaskIsActiveOrNotView.as_view(), name='Active_Archive'),
 
     # manager gives task to worker
     path('manager/<int:id>/<str:pk>/', ManagerToWorkerView.as_view(), name='manager_to_worker'),

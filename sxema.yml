@@ -1,0 +1,1165 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /api/profile/:
+    get:
+      operationId: listUserProfiles
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateUserProfile
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/user/stat/:
+    get:
+      operationId: listAllUserStats
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+  /api/user/sector/{id}/:
+    get:
+      operationId: retrieveUserSector
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/user/cabinet/{id}/:
+    get:
+      operationId: retrieveCustomUser
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this user.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserStat'
+          description: ''
+      tags:
+      - api
+  /api/user_cabinet/task/{id}/:
+    get:
+      operationId: retrieveOneUserTask
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/sector/:
+    get:
+      operationId: listSectors
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createSector
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/sector/{id}/:
+    get:
+      operationId: retrieveSectorUpdate
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateSector
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroySectorUpdate
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/sector/stat/:
+    get:
+      operationId: listSectorStats
+      description: ''
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+  /api/task/create/:
+    get:
+      operationId: listTaskListCreates
+      description: ''
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createTaskList
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/task/detail/{id}/:
+    get:
+      operationId: retrieveTask
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this task.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateTask
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this task.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Task'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateTask
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this task.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Task'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyTask
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this task.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/task/stat/:
+    get:
+      operationId: listTaskStats
+      description: ''
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+  /api/task/sector/{id}/:
+    get:
+      operationId: retrieveTaskSector
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/task/sector/stat/{id}/:
+    get:
+      operationId: retrieveTaskSectorStat
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/review/list/create/{id}/:
+    get:
+      operationId: retrieveReview
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createReview
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/review/edit/update/delete/{id}/:
+    get:
+      operationId: retrieveTaskReview
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this task review.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskReview'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateTaskReview
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this task review.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskReview'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TaskReview'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TaskReview'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskReview'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateTaskReview
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this task review.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskReview'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TaskReview'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TaskReview'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskReview'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyTaskReview
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this task review.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/active/archive/{id}/:
+    get:
+      operationId: retrieveTask
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this task.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateTask
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this task.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Task'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateTask
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this task.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Task'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyTask
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this task.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/currency/:
+    get:
+      operationId: listCurrencys
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+  /api/token/:
+    post:
+      operationId: createTokenObtainPair
+      description: 'Takes a set of user credentials and returns an access and refresh
+        JSON web
+
+        token pair to prove the authentication of those credentials.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+      tags:
+      - api
+  /api/refresh/:
+    post:
+      operationId: createTokenRefresh
+      description: 'Takes a refresh type JSON web token and returns an access type
+        JSON web
+
+        token if the refresh token is valid.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+      tags:
+      - api
+  /api/logout/:
+    post:
+      operationId: createRefreshToken
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshToken'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RefreshToken'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RefreshToken'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefreshToken'
+          description: ''
+      tags:
+      - api
+  /api/signup/:
+    post:
+      operationId: createUserSignUp
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/manager/{id}/{id}/:
+    post:
+      operationId: createTask
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Task'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+      tags:
+      - api
+  /api/cancel/task/{id}/:
+    patch:
+      operationId: partialUpdateTaskCancel
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskCancel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TaskCancel'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TaskCancel'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskCancel'
+          description: ''
+      tags:
+      - api
+  /api/finish/task/{id}/:
+    patch:
+      operationId: partialUpdateTaskCancel
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskCancel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TaskCancel'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TaskCancel'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskCancel'
+          description: ''
+      tags:
+      - api
+components:
+  schemas:
+    UserStat:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        sector:
+          type: integer
+          nullable: true
+        status:
+          enum:
+          - director
+          - manager
+          - employee
+          type: string
+          readOnly: true
+        total:
+          type: string
+          readOnly: true
+        doing:
+          type: string
+          readOnly: true
+        finished:
+          type: string
+          readOnly: true
+        canceled:
+          type: string
+          readOnly: true
+        missed:
+          type: string
+          readOnly: true
+        doing_percent:
+          type: string
+          readOnly: true
+        missed_percent:
+          type: string
+          readOnly: true
+        finished_percent:
+          type: string
+          readOnly: true
+        canceled_percent:
+          type: string
+          readOnly: true
+    Task:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        problem:
+          type: string
+        reason:
+          type: string
+          maxLength: 200
+        event:
+          type: string
+          maxLength: 100
+        deadline:
+          type: string
+          format: date-time
+        boss:
+          type: string
+          readOnly: true
+        worker:
+          type: integer
+        remain_days:
+          type: string
+          readOnly: true
+        all_days:
+          type: string
+          readOnly: true
+        status:
+          enum:
+          - missed
+          - doing
+          - finished
+          - canceled
+          type: string
+          readOnly: true
+        financial_help:
+          type: boolean
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - problem
+      - deadline
+      - worker
+    TaskReview:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            username:
+              type: string
+              description: Required. 150 characters or fewer. Letters, digits and
+                @/./+/-/_ only.
+              pattern: ^[\w.@+-]+\z
+              maxLength: 150
+            sector:
+              type: integer
+              nullable: true
+            password:
+              type: string
+              writeOnly: true
+              maxLength: 128
+            status:
+              enum:
+              - director
+              - manager
+              - employee
+              type: string
+              readOnly: true
+          required:
+          - username
+          - password
+          readOnly: true
+        task:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            problem:
+              type: string
+            reason:
+              type: string
+              maxLength: 200
+            event:
+              type: string
+              maxLength: 100
+            deadline:
+              type: string
+              format: date-time
+            boss:
+              type: string
+              readOnly: true
+            worker:
+              type: integer
+            remain_days:
+              type: string
+              readOnly: true
+            all_days:
+              type: string
+              readOnly: true
+            status:
+              enum:
+              - missed
+              - doing
+              - finished
+              - canceled
+              type: string
+              readOnly: true
+            financial_help:
+              type: boolean
+              readOnly: true
+            created_at:
+              type: string
+              format: date-time
+              readOnly: true
+            updated:
+              type: string
+              format: date-time
+              readOnly: true
+          required:
+          - problem
+          - deadline
+          - worker
+          readOnly: true
+        content:
+          type: string
+          description: write your comment
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - content
+    TokenObtainPair:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - username
+      - password
+    TokenRefresh:
+      type: object
+      properties:
+        refresh:
+          type: string
+        access:
+          type: string
+          readOnly: true
+      required:
+      - refresh
+    RefreshToken:
+      type: object
+      properties:
+        refresh:
+          type: string
+      required:
+      - refresh
+    TaskCancel:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        problem:
+          type: string
+        reason:
+          type: string
+          maxLength: 200
+        event:
+          type: string
+          maxLength: 100
+        deadline:
+          type: string
+          format: date-time
+        boss:
+          type: string
+          readOnly: true
+        worker:
+          type: integer
+        remain_days:
+          type: string
+          readOnly: true
+        all_days:
+          type: string
+          readOnly: true
+        status:
+          enum:
+          - missed
+          - doing
+          - finished
+          - canceled
+          type: string
+          readOnly: true
+        financial_help:
+          type: boolean
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - problem
+      - deadline
+      - worker
